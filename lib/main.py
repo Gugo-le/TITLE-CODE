@@ -18,3 +18,17 @@ def upload_initial_image(image):
 def generate_image_from_text(text):
     image = stable_diffusion(text, num_inference_steps=20).images[0]
     return image
+
+def compare_images(initial_image, generated_image):
+    
+    initial_image_features = clip_processor(images=initial_image, return_tensors="pt").pixel_values
+    generated_image_features = clip_processor(images=generated_image, return_tensors="pt").pixel_values
+
+    with torch.no_grad():
+        initial_image_features = clip_model.get_image_features(initial_image_features.to(device))
+        generated_image_features = clip_model.get_image_features(generated_image_features.to(device))
+    
+    
+    similarity = torch.nn.functional.cosine_similarity(initial_image_features, generated_image_features).item() * 100
+
+    return similarity
