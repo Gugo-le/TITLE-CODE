@@ -4,15 +4,19 @@ from transformers import CLIPProcessor, CLIPModel
 from diffusers import StableDiffusionPipeline
 import gradio as gr
 
+# CLIP 모델과 프로세서 로드
 clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
 clip_processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
 
+# Stable Diffusion 모델 로드
 device = "cuda" if torch.cuda.is_available() else "cpu"
 stable_diffusion = StableDiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-4")
 stable_diffusion.to(device)
 
+# 안전 체크 함수 비활성화
 def dummy_safety_checker(images, **kwargs):
     return images, [False] * len(images)
+stable_diffusion.safety_checker = dummy_safety_checker
 
 def upload_initial_image(image):
     pil_image = PILImage.open(image)
