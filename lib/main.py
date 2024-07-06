@@ -73,8 +73,8 @@ def gradio_interface():
         fn=process,
         inputs=inputs,
         outputs=outputs,
-        title="이미지 업로드 및 생성 비교",
-        description="초기 이미지를 업로드하고 텍스트를 입력하여 추상적인 이미지를 생성하고, 업로드한 초기 이미지와 생성된 이미지의 유사도를 비교합니다."
+        title="TITLE-CODE",
+        description="100년 후 미래에는 질문 능력이 중요하지 않을까?"
     )
 
     return interface
