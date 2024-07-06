@@ -45,6 +45,55 @@ Chat GPT와 같은 대화서비스와 다양한 플랫폼 서비스가 연계되
 3. 텍스트 설명을 바탕으로 이미지를 생성한다.
 4. 두 이미지를 비교하여 유사도를 계산한다.
 
+## 이미지 유사도 비교
+
+1. 코사인 유사도
+
+```python
+import numpy as np
+from PIL import Image
+
+def mini_img(img_path, resize_shape=(10, 10)):
+    img = Image.open(img_path)
+    img = img.resize(resize_shape)
+    return img
+
+def cosine_similarity(img1, img2):
+    array1 = np.array(img1)
+    array2 = np.array(img2)
+    assert array1.shape == array2.shape
+    
+    h, w, c = array1.shape
+    len_vec = h * w * c
+    vector_1 = array1.reshape(len_vec,) / 255.0
+    vector_2 = array2.reshape(len_vec,) / 255.0
+
+    cosine_similarity = np.dot(vector_1, vector_2) / (np.linalg.norm(vector_1) * np.linalg.norm(vector_2))
+    return cosine_similarity
+
+img1_path = "./assets/imgs/chat.jpg"
+img2_path = "./assets/imgs/gpt.jpg"
+
+img1 = mini_img(img1_path)
+img2 = mini_img(img2_path)
+
+score = cosine_similarity(img1, img2)
+print("Cosine Similarity Score:", score)
+
+```
+
+<img src="assets/imgs/cosine.png">
+
+>이미지의 코사인 유사도 값이 0.8358~정도 되는 것을 알 수 있다.
+
+- 이미지 크기를 10 * 10으로 Resizing한다.
+- 255로 나누어 값을 0~1 사이로 정규화한다.
+- 10 * 10 * 3의 3차원 이미지를 (300, )의 벡터로 변환한다.
+- 코사인 유사도를 구한다.
+
+
+
+
 ## How to Use
 ```
 pip install gradio torch transformers diffusers
