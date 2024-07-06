@@ -18,12 +18,12 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib64/
 parts/
 sdist/
 var/
 wheels/
 share/python-wheels/
+share/man/man1
 *.egg-info/
 .installed.cfg
 *.egg
