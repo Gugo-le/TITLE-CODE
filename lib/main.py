@@ -11,6 +11,9 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 stable_diffusion = StableDiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-4")
 stable_diffusion.to(device)
 
+def dummy_safety_checker(images, **kwargs):
+    return images, [False] * len(images)
+
 def upload_initial_image(image):
     pil_image = PILImage.open(image)
     return pil_image
