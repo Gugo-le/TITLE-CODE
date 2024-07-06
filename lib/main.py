@@ -14,3 +14,7 @@ stable_diffusion.to(device)
 def upload_initial_image(image):
     pil_image = PILImage.open(image)
     return pil_image
+
+def generate_image_from_text(text):
+    image = stable_diffusion(text, num_inference_steps=20).images[0]
+    return image
