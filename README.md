@@ -156,16 +156,16 @@ print("Label probs:", probs)
 >위 코드는 이미지와 텍스트를 입력하면 이미지와 텍스트 간의 유사도를 출력하는 코드이다.
 
 - ViT-B/32를 backbone network로 사용하는 CLIP모델을 불러와 model에 저장해준다.
-- preprocess는 입력 이미지에 대한 전처리 메서드입니다.
-- preprocess는 ToTensor와 Resize(224, 224)로 구성되어 있습니다.
-- img를 불러와 preprocess를 해준 다음, 차원을 늘려준 후(batch) device에 할당해 줍니다.
-- tokenize는 clip의 tokenize를 사용하고 77차원으로 임베딩해줍니다.
+- preprocess는 입력 이미지에 대한 전처리 메서드이다.
+- preprocess는 ToTensor와 Resize(224, 224)로 구성되어 있다.
+- img를 불러와 preprocess를 해준 다음, 차원을 늘려준 후(batch) device에 할당해준다.
+- tokenize는 clip의 tokenize를 사용하고 77차원으로 임베딩해준다.
 - image와 text를 각각 512차원으로 encoding해줍니다.(image: 1 * 512, text: 3 * 512)
-- 모델의 입력값으로 image와 text를 전달해줍니다.
-- 모델의 출력값은 image와 text를 전달해줍니다.
-- 모델의 출력값은 image와 text에 대한 logits입니다.
-- 예측값에 softmax를 적용하여 확률로 만들어준 다음 cpu에 할당하고 numpy로 변환해줍니다.
-- 최종적으로 모델은 입력 이미지에 대하 입력 텍스트 3개의 유사도를 출력합니다.
+- 모델의 입력값으로 image와 text를 전달해준다.
+- 모델의 출력값은 image와 text를 전달해준다.
+- 모델의 출력값은 image와 text에 대한 logits이다.
+- 예측값에 softmax를 적용하여 확률로 만들어준 다음 cpu에 할당하고 numpy로 변환해준다.
+- 최종적으로 모델은 입력 이미지에 대하 입력 텍스트 3개의 유사도를 출력한다.
 
 ## How to Use
 ```
