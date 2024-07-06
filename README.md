@@ -130,6 +130,34 @@ print(f"두 이미지의 유사도: {similarity_score}")
 
 >이미지의 히스토그램 유사도 값이 0.8416~정도 되는 것을 알 수 있다.
 
+3. Open AI CLIP
+```python
+import torch
+import clip
+from PIL import Image
+
+device = "cuda" if torch.cuda.is_available() else "cpu"
+model, preprocess = clip.load("ViT-B/32", device=device)
+
+image = preprocess(Image.open("assets/imgs/gpt.jpg")).unsqueeze(0).to(device) # 원하는 이미지 경로로 수정
+text = clip.tokenize(["a person", "searching", "chatgpt"]).to(device)
+
+with torch.no_grad():
+    image_features = model.encode_image(image)
+    text_features = model.encode_text(text)
+    
+    logits_per_image, logits_per_text = model(image, text)
+    probs = logits_per_image.softmax(dim=-1).cpu().numpy()
+
+print("Label probs:", probs) 
+```
+<img src="assets/imgs/clip.png">
+
+>위 코드는 이미지와 텍스트를 입력하면 이미지와 텍스트 간의 유사도를 출력하는 코드이다.
+
+- ViT-B/32를 backbone network로 사용하는 CLIP모델을 불러와 model에 저장해준다.
+- preprocess는 입력 이미지에 대한 전처리 메서드입니다.
+- preprocess는 ToTensor와 Resize(224, 224)로 구성되어 있습니다.
 
 ## How to Use
 ```
