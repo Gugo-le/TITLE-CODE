@@ -23,3 +23,13 @@ for step in range(max_steps + 1):
     if step in steps_to_save:
         noise_images.append((step, np.copy(noisy_image)))
     noisy_image = add_color_noise(noisy_image, noise_level)
+    
+plt.figure(figsize=(15, 8))
+for i, (step, img) in enumerate(noise_images):
+    plt.subplot(2, 4, i + 1)
+    plt.imshow(img)
+    plt.title(f'Step {step}')
+    plt.axis('off')
+plt.tight_layout()
+plt.show()
+    
