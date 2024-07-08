@@ -57,7 +57,7 @@ def gradio_interface():
         # 이미지 유사도 비교
         similarity = compare_images(uploaded_initial_image, generated_image)
 
-        return f"업로드한 초기 이미지와 생성된 이미지의 유사도: {similarity:.2f}%", uploaded_initial_image, generated_image
+        return f"업로드한 초기 이미지와 생성된 이미지의 유사도: {similarity:.2f}%", generated_image
 
     inputs = [
         gr.Image(label="초기 이미지 업로드", type="filepath"),
