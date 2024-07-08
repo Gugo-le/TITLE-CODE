@@ -58,6 +58,12 @@ Chat GPT와 같은 대화서비스와 다양한 플랫폼 서비스가 연계되
   </tr>
 </table>
 
+2. process
+   
+Forward Diffusion Process에서는 이미지에 고정된(fixed) 정규 분포(=Gaussian분포)로 생성된 Noise가 더해지고, Reverse Diffusion Process에서는 이미지를 학습된(learned) 정규 분포로 생성된 Noise이미지로 뺍니다.
+
+Diffusion Model이 풀려고 하는 문제는, Forward -> Reverse 단계를 거친 '결과 이미지'를 '입력 이미지'의 확률 분포와 유사하게 만드는 것 입니다. 이를 위해 Reverse단계에서, Noise 생성 확률 분포 Parameter인 평균과 표준편차를 업데이트하며 학습이 진행됩니다.
+
 
 ## 이미지 유사도 비교
 
