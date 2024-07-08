@@ -11,3 +11,7 @@ def add_color_noise(img, noise_level):
     noisy_img = img + noise
     noisy_img = np.clip(noisy_img, 0, 255).astype(np.uint8)
     return noisy_img
+
+steps_to_save = [0, 10, 20, 100, 300, 500, 700, 1000]
+max_steps = 1000
+noise_level = 10  
