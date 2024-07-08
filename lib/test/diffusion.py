@@ -18,3 +18,8 @@ noise_level = 10
 
 noisy_image = np.copy(image)
 noise_images = []
+
+for step in range(max_steps + 1):
+    if step in steps_to_save:
+        noise_images.append((step, np.copy(noisy_image)))
+    noisy_image = add_color_noise(noisy_image, noise_level)
