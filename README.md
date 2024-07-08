@@ -191,3 +191,14 @@ print("Label probs:", probs)
 ```
 pip install gradio torch transformers diffusers
 ```
+## 코드 설명
+
+```python
+def generate_image_from_text(text):
+    image = stable_diffusion(text, num_inference_steps=20).images[0]
+
+    return image
+```
+Stable Diffusion 모델을 import 해 입력한 텍스트를 바탕으로 이미지를 생성합니다.<br>.image[0]을 통해 생성된 이미지를 선택하여 반환합니다.
+
+
