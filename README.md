@@ -227,3 +227,8 @@ pip install gradio torch transformers diffusers
  ```
 python3 lib/TITLE-CODE.py
  ```
+
+## Postscript
+```
+To create a public link, set `share=True` in `launch()`.
+```
