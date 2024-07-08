@@ -45,6 +45,37 @@ Chat GPT와 같은 대화서비스와 다양한 플랫폼 서비스가 연계되
 3. 텍스트 설명을 바탕으로 이미지를 생성한다.
 4. 두 이미지를 비교하여 유사도를 계산한다.
 
+## Diffusion Model
+1. Diffusion Model이란?
+
+입력 이미지에 (정규 분포를 가진) Noise를 여러 단계에 걸쳐 추가하고, 여러 단계에 걸쳐 (정규 분포를 가진) Noise를 제거함으로써, 입력 이미지와 유사한 확률 분포를 가진 결과 이미지를 생성하는 모델입니다. 
+
+```python
+
+# 컬러 노이즈 추가 함수
+def add_color_noise(img, noise_level):
+    noise = np.random.normal(0, noise_level, img.shape)
+    noisy_img = img + noise
+    noisy_img = np.clip(noisy_img, 0, 255).astype(np.uint8)
+    return noisy_img, noise
+
+# 노이즈 제거 함수
+def remove_color_noise(noisy_img, noise_history):
+    recovered_img = np.copy(noisy_img)
+    for noise in reversed(noise_history):
+        recovered_img = recovered_img - noise
+        recovered_img = np.clip(recovered_img, 0, 255).astype(np.uint8)
+    return recovered_img
+```
+
+<table>
+  <tr>
+    <td><img src="assets/imgs/Figure_1.png" width="540"></td>
+    <td><img src="assets/imgs/recover.png" width="300"></td>
+  </tr>
+</table>
+
+
 ## 이미지 유사도 비교
 
 1. 코사인 유사도
