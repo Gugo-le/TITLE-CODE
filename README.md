@@ -187,10 +187,6 @@ print("Label probs:", probs)
 - 예측값에 softmax를 적용하여 확률로 만들어준 다음 cpu에 할당하고 numpy로 변환해준다.
 - 최종적으로 모델은 입력 이미지에 대하 입력 텍스트 3개의 유사도를 출력한다.
 
-## How to Use
-```
-pip install gradio torch transformers diffusers
-```
 ## 코드 설명
 
 ```python
@@ -220,3 +216,14 @@ with torch.no_grad():
     return similarity
 ```
 CLIP 모델을 사용하여 초기 이미지와 생성된 이미지의 특징을 비교하여 코사인 유사도를 계산합니다. *100을 이용하여 백분율을 나타냅니다.
+
+
+## How to Use
+```
+pip install gradio torch transformers diffusers
+```
+
+## Try it
+ ```
+python3 lib/TITLE-CODE.py
+ ```
