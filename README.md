@@ -201,4 +201,22 @@ def generate_image_from_text(text):
 ```
 Stable Diffusion 모델을 import 해 입력한 텍스트를 바탕으로 이미지를 생성합니다.<br>.image[0]을 통해 생성된 이미지를 선택하여 반환합니다.
 
+```python
+def compare_images(initial_image, generated_image):
+   
+    initial_image_features = clip_processor(images=initial_image, return_tensors="pt").pixel_values
+    generated_image_features = clip_processor(images=generated_image, return_tensors="pt").pixel_values
+```
 
+CLIP 프로세서를 이용하여 초기 이미지의 픽셀값을 구하고 CLIP 모델을 사용하여 처리합니다. <br>
+
+```python
+with torch.no_grad():
+        initial_image_features = clip_model.get_image_features(initial_image_features.to(device))
+        generated_image_features = clip_model.get_image_features(generated_image_features.to(device))
+    
+    similarity = torch.nn.functional.cosine_similarity(initial_image_features, generated_image_features).item() * 100
+
+    return similarity
+```
+CLIP 모델을 사용하여 초기 이미지와 생성된 이미지의 특징을 비교하여 코사인 유사도를 계산합니다. *100을 이용하여 백분율을 나타냅니다.
