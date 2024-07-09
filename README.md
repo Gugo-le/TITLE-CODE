@@ -217,6 +217,32 @@ with torch.no_grad():
 ```
 CLIP 모델을 사용하여 초기 이미지와 생성된 이미지의 특징을 비교하여 코사인 유사도를 계산합니다. *100을 이용하여 백분율을 나타냅니다.
 
+## Experiment
+<table>
+<tr>
+<td><img src="assets/imgs/IMG_2631.jpg" width = "600"></td>
+</tr>
+</table>
+
+<table>
+  <tr>
+    <td><img src="assets/imgs/cat2.png" width="500"></td>
+    <td><img src="assets/imgs/cat3.png" width="500"></td>
+    <td><img src="assets/imgs/cat4.png" width="500"></td>
+    <td><img src="assets/imgs/cat5.png" width="500"></td>
+  </tr>
+</table>
+
+> Chat GPT가 추천한 텍스트를 보고 입력하였다. 
+
+인공지능이 봤을 때 최대의 유사도는 83.18%로 앞서 실험했을 때에 비해 굉장히 높은 유사도를 보여주었다.
+
+다음은 사람의 텍스트이다.
+> a cute light brown cat with a rilakkuma hat
+<img src="assets/imgs/cat1.png" width = "600">
+
+
+
 
 ## How to Use
 ```
