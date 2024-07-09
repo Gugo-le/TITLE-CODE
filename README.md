@@ -241,9 +241,12 @@ CLIP 모델을 사용하여 초기 이미지와 생성된 이미지의 특징을
 > a cute light brown cat with a rilakkuma hat
 <img src="assets/imgs/cat1.png" width = "600">
 
+인공지능 보다 더 자세히 적은 거 같지만 Stable Diffusion 모델이 리락쿠마를 잘 모르는지 생성된 이미지에서 모자를 아예 빼버린 듯 하다.
 
+인공지능과 사람을 비교함으로써 유사도를 봤을 때는 인공지능이 훨씬 높으나
+텍스트를 입력하는 부분에서는 아직까진 사람이 우수하다고 생각했다.
 
-
+>인공지능 비교 모델: Chat GPT4o
 ## How to Use
 ```
 pip install gradio torch transformers diffusers
